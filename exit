@@ -1,0 +1,82 @@
+[33mcommit ef9f6891f48fa0f87bd795b9325cbba54129dbd9[m
+Merge: 2bb37df e453226
+Author: PiotrusWatson <piotruswatson@gmail.com>
+Date:   Fri May 27 19:15:23 2016 +0100
+
+    Merge remote-tracking branch 'alice/master'
+
+[33mcommit 2bb37df1445cbf6dc1656900d8b259abec4e27af[m
+Author: PiotrusWatson <piotruswatson@gmail.com>
+Date:   Fri May 27 19:10:33 2016 +0100
+
+    Made player animate walk cycle when moving, and set up basic state machine for anims at hand.
+    
+    Looks bad.
+    
+    Need to fix:
+    Speed at which animation plays
+    Rigid feeling of controls
+    The players tendency to bounce up and down like an overexcitable prick
+
+[33mcommit 167fdab4a2bec464553593350ca109004caea4a7[m
+Author: PiotrusWatson <piotruswatson@gmail.com>
+Date:   Fri May 27 18:42:33 2016 +0100
+
+    Alright so I did quite a lot in this bit
+    
+    Made first pass at player movement it's basic and feels like shit
+    
+    Converted the ASE files to .png and added an animation controller. Also added the animations in general to the player gameobject.
+    
+    Made a really hilariously bad looking UI line between the split of the screen
+
+[33mcommit 57a1358ea35e78995dc97b658b4e28c8d99373ee[m
+Author: PiotrusWatson <piotruswatson@gmail.com>
+Date:   Sat May 21 22:30:52 2016 +0100
+
+    Added cameras. I'll do stuff with them later ok
+
+[33mcommit e4532262c74b214bad684b655aa2d387e7dfb22f[m
+Merge: be48853 f92d2e1
+Author: Aliceravier <aliceravier@yahoo.co.uk>
+Date:   Sat May 21 21:59:43 2016 +0100
+
+    Merge pull request #1 from PiotrusWatson/master
+    
+    Hi
+
+[33mcommit f92d2e104d28ff3a672946183e1a5dcc3f0dbbff[m
+Author: PiotrusWatson <piotruswatson@gmail.com>
+Date:   Sat May 21 21:50:06 2016 +0100
+
+    Changed project to 2D mode and set this thing up to actually work a bit better with git.
+    
+    Put in basic folder tree.
+
+[33mcommit 44b22a04bd206bc48769e818944d78263d038f54[m
+Author: PiotrusWatson <piotruswatson@gmail.com>
+Date:   Sat May 21 21:45:04 2016 +0100
+
+    ADDED A GITIGNORE THIS IS P IMPORTANT
+
+[33mcommit be48853a5bf5874f5e33ac098743da1f621962fe[m
+Author: Aliceravier <aliceravier@yahoo.co.uk>
+Date:   Sat May 21 01:20:28 2016 +0100
+
+    walking animations
+    
+    Basic 3 and 2 frame walking animations
+
+[33mcommit e842addfcb862d19a7aeba6c1c351c22d27f2668[m
+Author: Aliceravier <aliceravier@yahoo.co.uk>
+Date:   Fri May 20 16:18:26 2016 +0100
+
+    extra unity stuff
+
+[33mcommit 388fdb6db95ca855c477b5460e7b49a3e701be66[m
+Author: Aliceravier <aliceravier@yahoo.co.uk>
+Date:   Fri May 20 16:13:58 2016 +0100
+
+    unity basic plus player sword anim
+    
+    basic player sword anim (3 frames)
