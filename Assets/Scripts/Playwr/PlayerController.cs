@@ -9,10 +9,24 @@ public class PlayerController : MonoBehaviour {
 	 * Do sword
 	 * maybe look into fancy animation stuff like blend trees etc - for now can make do with bools and specific rotation code but w/e
 	 */
-	Rigidbody2D rb2D;
-	float horizontal;
-	float vertical;
 
+	/*
+	PLAN:
+	Aight so this code needs to find A: the first axis pressed
+	B: rotate based on the value in that axis to a specific degree
+	C: move forwards in that axis while taking any other axis presses as a way of moving diagonally
+		C1: if other direction is let go, goes back to rotating
+    D: turn on animation, and turn it off the second movement stops
+	E: 
+	*/
+	Rigidbody2D rb2D;
+	float horizontalRaw; //These store the RAW values taken straight from axes
+	float verticalRaw;
+
+	int horizontal;
+	int vertical;
+
+	enum Direction{North, East, South, West, Nowhere}
 
 	Animator animator;
 
@@ -29,17 +43,71 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		horizontal = Input.GetAxis ("Horizontal"); //storing variables so i can do checks against them :)
-		vertical =  Input.GetAxis ("Vertical"); 
+		horizontalRaw = Input.GetAxis ("Horizontal"); //storing variables so i can do checks against them :)
+		verticalRaw =  Input.GetAxis ("Vertical"); 
 
-		if (horizontal != 0) //This code ensures the player doesnt move diagonally
-			vertical = 0;
+		horizontal = Rounder (horizontalRaw);
+		vertical = Rounder(verticalRaw); //Here i round them to ints in the vain hope that this will make the movement feel not shit
+
+		Debug.Log (horizontal);
 
 		isMoving = horizontal != 0 || vertical != 0; //if player is moving, it = true, else it = false
 
-		animator.SetBool ("IsMoving", isMoving);
+		rb2D.velocity = new Vector2 (horizontal, vertical) * speed;
+		animator.SetBool ("IsMoving", isMoving);	//Uses the "isMoving" bool to turn on the player's animtion
+		/*
+		
+
+		if (horizontal == 0)
+			realHorizontal = 0;
+		if (vertical == 0)
+			realVertical = 0;
 
 
-		rb2D.velocity = new Vector2 (horizontal, vertical) * speed; //moves the player 
+		 
+
+		; 
+
+
+		 //moves the player */
 	}
+
+	Direction GetDirection(float xAxis, float yAxis)
+	/*Takes horizontal and vertical values, returns direction name :)*/
+	{
+		if (xAxis == 1)
+			return Direction.East;
+		else if (xAxis == -1)
+			return Direction.West;
+		else if (yAxis == 1)
+			return Direction.North;
+		else if (yAxis == -1)
+			return Direction.South;
+		else
+			return Direction.Nowhere;
+
+	}
+
+	void RotatePlayer ()
+	{
+		//PLACEHOLDER
+	}
+
+	int Rounder(float flaot)
+	//Rounds up if greater than 0, or down if less than 0 its nice ok
+	{
+		if (flaot > 0)
+			return Mathf.CeilToInt (flaot);
+		else if (flaot < 0)
+			return Mathf.FloorToInt (flaot);
+		else
+			return 0;
+	}
+
+
+
+
+
+
+		
 }
