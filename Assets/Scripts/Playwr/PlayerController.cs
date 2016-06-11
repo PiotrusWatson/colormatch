@@ -46,33 +46,21 @@ public class PlayerController : MonoBehaviour {
 		horizontalRaw = Input.GetAxis ("Horizontal"); //storing variables so i can do checks against them :)
 		verticalRaw =  Input.GetAxis ("Vertical"); 
 
-		horizontal = Rounder (horizontalRaw);
-		vertical = Rounder(verticalRaw); //Here i round them to ints in the vain hope that this will make the movement feel not shit
+		horizontal = Rounder (horizontalRaw);//Here i round them to ints in the vain hope that this will make the movement feel not shit
+		vertical = Rounder(verticalRaw);
 
-		Debug.Log (horizontal);
+		Direction dir = AxisToDirection (horizontal, vertical);
+
+		RotateToDirection (dir, rb2D);
 
 		isMoving = horizontal != 0 || vertical != 0; //if player is moving, it = true, else it = false
 
 		rb2D.velocity = new Vector2 (horizontal, vertical) * speed;
 		animator.SetBool ("IsMoving", isMoving);	//Uses the "isMoving" bool to turn on the player's animtion
-		/*
-		
 
-		if (horizontal == 0)
-			realHorizontal = 0;
-		if (vertical == 0)
-			realVertical = 0;
-
-
-		 
-
-		; 
-
-
-		 //moves the player */
 	}
 
-	Direction GetDirection(float xAxis, float yAxis)
+	Direction AxisToDirection(float xAxis, float yAxis)
 	/*Takes horizontal and vertical values, returns direction name :)*/
 	{
 		if (xAxis == 1)
@@ -87,10 +75,19 @@ public class PlayerController : MonoBehaviour {
 			return Direction.Nowhere;
 
 	}
+		
 
-	void RotatePlayer ()
+	void RotateToDirection (Direction dir, Rigidbody2D rb)
 	{
-		//PLACEHOLDER
+		//Takes direction name, rotates a rigidbody to that direchion name
+		if (dir == Direction.North)
+			rb.MoveRotation (0);
+		else if (dir == Direction.East)
+			rb.MoveRotation (90);
+		else if (dir == Direction.South)
+			rb.MoveRotation (180);
+		else if (dir == Direction.West)
+			rb.MoveRotation (270);
 	}
 
 	int Rounder(float flaot)
